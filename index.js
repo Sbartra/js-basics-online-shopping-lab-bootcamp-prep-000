@@ -1,75 +1,32 @@
-var cart = []
+var cart = [];
 
+function setCart(newCart) {
+cart = newCart;
+}
 function getCart() {
- return cart;
+return cart;
 }
-
-
-function setCart(c) {
-  cart = c
-}
-
 function addToCart(item) {
-  var itemAndPrice = {};
-  var price = Math.floor(Math.random() * 10);
-  itemAndPrice[item] = price;
-  cart.push(itemAndPrice);
-
-  return cart;
+var price = Math.floor(Math.random() * 10);
+cart.push({item: price});
+console.log(item + " has been added to your cart.");
+return cart;
 }
 
 function viewCart() {
-  var inCart = [];
-  var socksCost = 0;
-  var puppyCost = 0;
-  var iPhoneCost = 0;
+if (cart.length != 0) {
+var newArray = [];
+for (var i = 0, l = cart.length; i < l; i++) {
 
-  for(var i = 0; i < getCart().length; i++){
-      for(var x in getCart()[i]){
-        if(x === 'socks'){
-          socksCost = getCart()[i][x];
-        } else if(x === 'puppy'){
-          puppyCost = getCart()[i][x];
-        } else if (x === 'iPhone'){
-          iPhoneCost = getCart()[i][x];
-        }
-      }
+var ItemPriceObj = cart[i];
+var item = Object.keys(ItemPriceObj);
+var price = ItemPriceObj['item'];
+newArray.push(` ${item} at \$${price}`)
+
 }
-inCart.push(socksCost, puppyCost, iPhoneCost);
-  console.log(`In your cart, you have socks at $${socksCost}, puppy at $${puppyCost}, iPhone at $${iPhoneCost}`);
+console.log(`In your cart, you have ${newArray}.`);
 }
-viewCart();
-function total() {
-
-  const socksCost = getCart()[0]["socks"];
-    const puppyCost = getCart()[1]["puppy"];
-    const iPhoneCost = getCart()[2]["iPhone"];
-
-    var totalCost = 0;
-
-    for(var i = 0; i < getCart().length; i++){
-      for(var cost in getCart()[i]){
-        totalCost += getCart()[i][cost];
-      }
-    }
-    return totalCost;
+else {
+return console.log('Your shopping cart is empty.');
 }
-
-function removeFromCart(item) {
-  for(var i = 0; i < getCart().length; i++){
-    for(var x in getCart()[i]){
-      if(getCart()[i].hasOwnProperty(item)){
-        delete getCart()[i];
-      }
-    }
-  }
-  return getCart();
-}
-
-function placeOrder(cardNumber) {
-  if(cardNumber.length === 0){
-    return 'We don\'t have a credit card on file for you to place your order.';
-  } else {
-    return `Your total cost is $${total()}, which will be charged to your credit card ${cardNumber}`;
-  }
 }
