@@ -23,7 +23,7 @@ function viewCart() {
   var socksCost = 0;
   var puppyCost = 0;
   var iPhoneCost = 0;
-  
+
   for(var i = 0; i < getCart().length; i++){
       for(var x in getCart()[i]){
         if(x === 'socks'){
@@ -46,7 +46,7 @@ function total() {
     const iPhoneCost = getCart()[2]["iPhone"];
 
     var totalCost = 0;
-    
+
     for(var i = 0; i < getCart().length; i++){
       for(var cost in getCart()[i]){
         totalCost += getCart()[i][cost];
