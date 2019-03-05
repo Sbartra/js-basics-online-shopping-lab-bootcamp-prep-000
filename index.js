@@ -2,11 +2,11 @@ var cart = []
 
 
  function setCart(newCart) {
-  cart = newCart;	  
+  cart = newCart;
 
 
-   return t	 
-}	
+   return t
+}
 
  function getCart(){
   return cart
